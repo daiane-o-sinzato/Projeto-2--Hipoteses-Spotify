@@ -1,0 +1,101 @@
+# Projeto 2- Hipóteses
+
+**Contexto e objetivo**
+
+O streaming de música tornou-se uma parte essencial da indústria musical contemporânea, desempenhando um papel significativo na descoberta do consumo de música pelos ouvintes. O Spotify quer entender melhor quais fatores realmente influenciam no sucesso de uma música, para isso levantou 5 hipóteses que devem confirmar ou refutar a relevância de cada característica analisada.
+
+**Metodologias:**
+
+Utilizamos uma combinação de testes estatísticos e análise de regressão. Inicialmente, realizamos o teste de Shapiro-Wilk para verificar a normalidade das variáveis. Em seguida, utilizamos o teste de Mann-Whitney U para comparar as variáveis entre diferentes grupos. Além disso, aplicamos a correlação de Pearson para avaliar a relação entre o número de playlists e o número de streams. Por fim, realizamos análises de regressão para investigar a influência no número de streams.
+
+O teste de Mann-Whitney U é como uma briga entre duas equipes. Você dá números para cada pessoa em cada equipe com base em alguma coisa que você mediu nelas, como altura. Então, você olha para quem tem o número mais alto na primeira equipe e quem tem o número mais alto na segunda equipe. Se a maioria dos números mais altos estiver em uma equipe, você sabe que essa equipe geralmente tem números mais altos. Mas se os números altos estiverem espalhados, não dá para dizer com certeza quem é melhor.
+
+A correlação de Spearman é como uma linha imaginária que tenta ver se os números em duas listas se movem juntos de alguma maneira. Se eles sempre aumentam juntos ou sempre diminuem juntos, a correlação é forte. Se às vezes aumentam juntos e às vezes diminuem juntos, é uma correlação fraca.
+
+*Teste de Shapiro-Wilk*: Analisa se os dados seguem uma distribuição normal. Se o valor-p for maior que 0.05, os dados podem ser considerados normalmente distribuídos.
+
+*Mann-Whitney U:* Compara duas amostras independentes quando os dados não são normalmente distribuídos. Um valor-p menor que 0.05 indica diferença significativa entre as medianas das duas amostras.
+
+*Correlação de Spearman:* Avalia a relação entre duas variáveis, mesmo quando não seguem uma distribuição normal. Um coeficiente de correlação próximo de +1 ou -1 sugere uma relação forte entre as variáveis, enquanto próximo de 0 indica ausência de correlação.
+
+**Descobertas fundamentais para criar a linha de análise:**
+
+O que significa cada coluna da minha base de dados para o Spotify:
+
+*Speechiness:* Detecta a proporção da música em que palavras são ditas na faixa. Também varia entre 0 e 1.
+
+Liveness: Classifica a presença de público na gravação na música. Valores mais altos representam um aumento na certeza da gravação da música ser "ao vivo".
+
+Instrumentalness (Instrumentalidade): prevê se a faixa contém vocais. Sons como “Ooh” e “aah” são tratados como instrumentais neste contexto. Faixas de rap ou palavras faladas são claramente “vocais”. Quanto mais perto o indicador estiver de 1.0, maior a probabilidade de a música não ter conteúdo vocal.
+
+Acousticness (Acústica): uma medida de confiança que vai de 0.0 a 1.0 que determina se a faixa é acústica. 1.0 representa alta confiança de que a música é acústica.
+
+Energy: Indica um percentual de intensidade e atividade da música.
+
+Danceability: Variável numérica que recebe valores entre 0 e 1. Descreve o quanto uma música é considerada “dançável” a partir de uma combinação de aspectos como ritmo, estabilidade e quantidade de batidas.
+
+Valence: Também possui valores que variam entre 0 e 1. Expressa a positividade contida na música, ou seja, músicas alegres e eufóricas terão valores altos para essa variável, enquanto músicas mais tristes e raivosas possuirão valores baixos.
+
+A partir dessa pesquisa compreendemos então a necessidade de transformar esses dados numéricos em dados de texto que nos ajude a traçar um perfil desses ouvintes e suas preferências.
+
+1- Para comprovar ou refutar a hipótese de que: "Músicas com BPMs mais alto fazem mais sucesso", dividimos os BPMs em dois grupos:
+
+Grupo 1: Abaixo de 100 BPM por minuto
+
+Grupo 2:  Acima de 100 BPM por minuto
+
+(BPM's são as Batidas por Minuto, isso irá definir o quão rápida uma faixa musical é.)
+
+A hipótese de que músicas com BPM's mais alto fazem mais sucesso foi refutada: O teste de mannwhitneyu pontuou 0.78, o que significa que a correlação entre esses dois fatores não tem influência direta. Podemos notar que os BPM's moderados lideram no topo do gráfico de cascata.
+
+2- Os charts são indicadores de popularidade com relação a determinado período de tempo. E o Spotify tem interesse em confirmar ou refutar a hipótese de que esse comportamento se repete com seus concorrentes: Apple e Deezer.
+
+Deezer: Com um valor-p de aproximadamente 0.639, não há diferença estatisticamente significativa no comportamento das plataformas com relação a popularidade, ou seja a hipótese é refutada.
+
+Apple: Com um valor-p de aproximadamente 0.033, há diferença estatisticamente significativa o que aponta a confirmação da hipótese de que as duas plataformas se comportaram de forma similar com relação a popularidade.
+
+3- As playlists são espécies de bibliotecas musicais que podem ser separadas por temas e preferências, o Spotify quer validar ou refutar a hipótese de que se uma música está presente em mais Playlists ela terá mais reproduções.
+
+O resultado dessa correlação foi de 5.03 indicando a correlação positiva e estatisticamente significativa entre o total de playlists e o número de streams.
+
+A hipótese é confirmada: quanto maior o número de playlists uma música está,  mais reproduções ela gera.
+
+4- O Spotify quer entender a relação entre o número de músicas que um artista tem em sua plataforma e a influência desse número nos streams.
+
+A hipótese de que se o artista tem mais músicas na plataforma receberá mais streams é confirmada  com a pontuação de 0.01, o que fica nítido avaliando os pontos altos marcados no gráfico de barras que representa os streams.
+
+5- O Spotify deseja compreender se as características de uma música influenciam nas reproduções.
+
+As características levantadas são avaliadas e segundo a metodologia aplicada quanto maior o P-valor a hipótese é refutada.
+
+Avaliando o nosso radar, observamos que:
+
+Valencia: Refutada
+
+Energia: Refutada
+
+Acustico: Refutada
+
+Instrumental: Refutada
+
+Ao vivo: Confirmado
+
+Linhas vocais: Confirmado
+
+Dançabilidade: Confirmado
+
+**Conclusões:**
+
+O Spotify deve observar as características voltadas para:  Dançabilidade, Ao Vivo e Linhas Vocais que são as características que mais influenciam no número de reproduções.
+
+A música estar presente na playlist também influencia no número de reproduções.
+
+O comportamento do Spotify é similar ao comportamento na Apple.
+
+Artistas que têm mais músicas têm mais reproduções nas plataformas.
+
+**Pontos de Atenção:**
+
+Algumas características que não foram levadas em consideração como "Key" (que aqui nomeamos como: Harmonia) e "Mode" (que aqui chamaremos de Escala) podem ser muito importantes para entender a preferência dos ouvintes e compreender quais são essas características técnicas e se elas influenciam no número de streams, então fica como um ponto de atenção.
+
+[SQL- Consulta](https://console.cloud.google.com/bigquery?hl=pt&project=projeto2-lab&ws=!1m15!1m4!16m3!1m1!1sprojeto2-lab!3e12!1m4!1m3!1sprojeto2-lab!2sbquxjob_3567094c_18ec352122d!3ssouthamerica-east1!1m4!4m3!1sprojeto2-lab!2sproj2lab!3strackspotify)[Google Colab- Python](https://colab.research.google.com/drive/1oXf6l8IvsLpRr9vtab8ENiX-iMWSwhM-#scrollTo=WQAt0a8JAF3D&uniqifier=7)[Powe BI- Dashboard](https://drive.google.com/drive/folders/1h8yub3ZntDx3VSOZeO6ZF9oBE4mCz_ZC)[CSV Completo](https://docs.google.com/spreadsheets/d/1sJexvyOSCglVuRh2pEycOKxLcrIwneq8IrCdLsQaNGg/edit#gid=147944920) Equipe: Ester Saraiva              Daiane Sinzato
